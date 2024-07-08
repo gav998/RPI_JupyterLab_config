@@ -12,15 +12,21 @@ echo "SCRIPT_DIR=$SCRIPT_DIR"
 echo "Set password for JupyterLab admin panel:"
 read -s PASSWORD
 
+# Устанавливаем зависимости
+echo "Install gcc python3-dev"
+sudo apt -y install gcc python3-dev
+
 # Создаем виртуальное окружение
 echo "Creating virtual environment..."
 python3 -m venv --system-site-packages "${SCRIPT_DIR}/venv"
 
 
 # Активируем виртуальное окружение
+echo "Activate virtual environment..."
 source "${SCRIPT_DIR}/venv/bin/activate"
 
 # Устанавливаем JupyterLab
+echo "Install jupyterlab..."
 pip install jupyterlab
 
 # Генерируем хэш для JupyterLab
